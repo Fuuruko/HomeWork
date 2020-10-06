@@ -23,21 +23,21 @@ void Time::getSec() {
 }
 
 //set
-void Time::setHour(int numb) {
-	numb %= 24;
-	hour = numb;
+void Time::setHour(int hour) {
+	hour %= 24;
+	this->hour = hour;
 	print();
 }
 
-void Time::setMin(int numb) {
-	numb %= 60;
-	min = numb;
+void Time::setMin(int min) {
+	min %= 60;
+	this->min = min;
 	print();
 }
 
-void Time::setSec(int numb) {
-	numb %= 60;
-	sec = numb;
+void Time::setSec(int sec) {
+	sec %= 60;
+	this->sec = sec;
 	print();
 }
 
