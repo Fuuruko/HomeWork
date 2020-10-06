@@ -1,4 +1,5 @@
 #include "ComplexNumb.h"
+#include <cmath>
 
 Complex::Complex(double re, double im)
 {
@@ -7,6 +8,7 @@ Complex::Complex(double re, double im)
 	this->im = im;
 }
 
+//сеттеры/геттеры
 double Complex::getReal() {
 	return re;
 }
@@ -25,6 +27,7 @@ void Complex::setImage(double im)
 	this->im = im;
 }
 
+
 string Complex::toString() {
 	string result = "";
 
@@ -34,6 +37,18 @@ string Complex::toString() {
 	return result;
 }
 
+//сравнение
+bool Complex::operator==(const Complex& rhs) const
+{
+	return re == rhs.re && im == rhs.im;
+}
+
+bool Complex::operator!=(const Complex& rhs) const
+{
+	return re != rhs.re || im != rhs.im;
+}
+
+//перегрузка оператора+
 const Complex Complex::operator+(const Complex& rhs) const
 {
 	return Complex(this->re + rhs.re, this->im + rhs.im);
@@ -44,21 +59,23 @@ const Complex Complex::operator+(const double rhs) const
 	return Complex(re + rhs, im);
 }
 
-bool Complex::operator==(const Complex& rhs) const
+const Complex& operator+(const double lhs, const Complex& rhs)
 {
-	return re == rhs.re && im == rhs.im;
+	return Complex(lhs + rhs.re, rhs.im);
 }
+
 
 const Complex& Complex::operator++()
 {
 	return Complex(++re, im);
 }
 
-const Complex& operator+(const double lhs, const Complex& rhs)
+const Complex& Complex::operator--()
 {
-	return Complex(lhs + rhs.re, rhs.im);
+	return Complex(--re, im);
 }
 
+//оперторы ввода/вывода
 ostream& operator<<(ostream& out, Complex& c)
 {
 	return out << c.toString();
@@ -69,4 +86,17 @@ istream& operator>>(istream& in, Complex& c)
 	cout << "Enter real and image: ";
 	in >> c.re >> c.im;
 	return in;
+}
+
+//дружественные ф-ции
+double arg(Complex cl) {
+	return acos(cl.re / abs(cl));
+}
+
+double abs(Complex cl) {
+	return sqrt(pow(cl.re, 2) + pow(cl.im, 2));
+}
+
+Complex sqrt(Complex cl) {
+	return Complex(abs(cl) * cos(arg(cl) / 2), abs(cl) * sin(arg(cl) / 2));
 }

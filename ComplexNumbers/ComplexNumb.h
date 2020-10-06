@@ -23,7 +23,9 @@ public:
 	const Complex operator+(const Complex& cl) const;
 	const Complex operator+(const double num) const;
 	friend const Complex& operator+(const double num, const Complex& cl);
+	
 	const Complex& operator++();
+	const Complex& operator--();
 
 	//перегрузка оператора == и !=
 	bool operator==(const Complex& cl) const;
@@ -36,6 +38,6 @@ public:
 	//методы
 	friend double arg(Complex cl);
 	friend double abs(Complex cl);
-	friend double sqrt(Complex cl);
+	friend Complex sqrt(Complex cl);
 
 };
