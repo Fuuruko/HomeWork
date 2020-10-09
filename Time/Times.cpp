@@ -47,10 +47,10 @@ void Time::print() {
 }
 
 
-void Time::setTime(int hour_, int min_, int sec_) {
-	hour = hour_;
-	min = min_;
-	sec = sec_;
+void Time::setTime(int hour, int min, int sec) {
+	this->hour = hour;
+	this->min = min;
+	this->sec = sec;
 }
 
 void Time::nextSecond() {
@@ -61,10 +61,12 @@ void Time::nextSecond() {
 		sec = 0;
 		++min;
 	}
+
 	if (min == 60) {
 		min = 0;
 		++hour;
 	}
+
 	if (hour == 24)
 		hour = 0;
 	cout << "After : ";
