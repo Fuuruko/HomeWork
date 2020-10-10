@@ -100,5 +100,5 @@ double abs(Complex cl) {
 }
 
 Complex sqrt(Complex& cl) {
-	return Complex(abs(cl) * cos(arg(cl) / 2), abs(cl) * sin(arg(cl) / 2));
+	return Complex(sqrt(abs(cl)) * cos(arg(cl) / 2), sqrt(abs(cl)) * sin(arg(cl) / 2));
 }
