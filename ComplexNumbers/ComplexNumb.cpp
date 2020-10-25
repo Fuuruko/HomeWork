@@ -32,7 +32,7 @@ string Complex::toString() {
 
 	// x + iy, x, iy, -iy, x - iy
 
-	result = to_string(re) + (im < 0 ? "-" : "+") + "i" + to_string(abs(im));
+	result = to_string(re) + (im < 0 ? " - " : " + ") + "i * " + to_string(abs(im));
 	return result;
 }
 
@@ -66,12 +66,14 @@ const Complex operator+(const double lhs, const Complex& rhs)
 
 const Complex& Complex::operator++()
 {
-	return Complex(++re, im);
+	++re;
+	return *this;
 }
 
 const Complex& Complex::operator--()
 {
-	return Complex(--re, im);
+	--re;
+	return *this;
 }
 
 //оперторы ввода/вывода
@@ -95,6 +97,6 @@ double abs(Complex cl) {
 	return sqrt(pow(cl.re, 2) + pow(cl.im, 2));
 }
 
-Complex sqrt(Complex cl) {
-	return Complex(abs(cl) * cos(arg(cl) / 2), abs(cl) * sin(arg(cl) / 2));
+Complex sqrt(Complex& cl) {
+	return Complex(sqrt(abs(cl)) * cos(arg(cl) / 2), sqrt(abs(cl)) * sin(arg(cl) / 2));
 }

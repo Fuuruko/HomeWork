@@ -48,6 +48,6 @@ public:
 	//методы
 	friend double arg(Complex cl);
 	friend double abs(Complex cl);
-	friend Complex sqrt(Complex cl);
+	friend Complex sqrt(Complex& cl);
 
 };
