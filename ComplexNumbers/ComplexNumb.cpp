@@ -1,11 +1,10 @@
 #include "ComplexNumb.h"
 #include <cmath>
 
-Complex::Complex(double re, double im)
+Complex::Complex(double re, double im): Real(re)
 {
-	this->re = re;
-	//(*this).re = re;
 	this->im = im;
+	this->re = re;
 }
 
 //сеттеры/геттеры
@@ -59,7 +58,7 @@ const Complex Complex::operator+(const double rhs) const
 	return Complex(re + rhs, im);
 }
 
-const Complex& operator+(const double lhs, const Complex& rhs)
+const Complex operator+(const double lhs, const Complex& rhs)
 {
 	return Complex(lhs + rhs.re, rhs.im);
 }
@@ -76,11 +75,10 @@ const Complex& Complex::operator--()
 }
 
 //оперторы ввода/вывода
-ostream& operator<<(ostream& out, Complex& c)
+ostream& operator<<(ostream& out, Complex c)
 {
 	return out << c.toString();
 }
-
 istream& operator>>(istream& in, Complex& c)
 {
 	cout << "Enter real and image: ";
