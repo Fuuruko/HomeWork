@@ -4,19 +4,18 @@
 using namespace std;
 
 class Real {
-private:
-	double x;
+protected:
+	double re;
 public:
-	Real(double re = 0): x(re) {}
+	Real(double re = 0): re(re) {}
 
 	virtual void print() {
-		cout << "x = "<< x << endl;
+		cout << "x = "<< re << endl;
 	}
 };
 
 class Complex: public Real {
 private: 
-	double re;
 	double im;
 public:
 	Complex(double re = 0, double im = 0);
