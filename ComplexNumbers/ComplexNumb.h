@@ -10,7 +10,7 @@ public:
 	Real(double re = 0): re(re) {}
 
 	virtual void print() {
-		cout << "x = "<< re << endl;
+		cout << "re = "<< re << endl;
 	}
 };
 
